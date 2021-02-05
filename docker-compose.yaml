@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    client:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - PRJ="proj"
+        volumes:
+            - ./:/src # ローカルとコンテナ内の同期
+        command: sh -c "cd $PRJ && yarn start"
+        working_dir: /src
+        ports:
+            - "127.0.0.1:3000:3000"
+        stdin_open: true # https://teratail.com/questions/249875
