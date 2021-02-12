@@ -5,8 +5,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-            args:
-                - PRJ="proj"
         volumes:
             - ./:/src # ローカルとコンテナ内の同期
         command: sh -c "cd $PRJ && yarn start"
